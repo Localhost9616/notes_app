@@ -1,9 +1,27 @@
 import React, { useEffect, useState } from 'react'
+import Page1 from './page1';
 
 const page2 = () => {
-
-  const [groupList,SetGroupList] = useState([]);
+  const savedData = ()=>{
+    let data = localStorage.getItem('groupsList');
+    if(data){
+      return JSON.parse(data);
+    }else{
+      return [];
+    }
+  }
+  const savedColorData = ()=>{
+    let data = localStorage.getItem('color');
+    if(data){
+      return JSON.parse(data);
+    }else{
+      return 'blue';
+    }
+  }
+  const [groupList,SetGroupList] = useState(savedData());
   const [color, setcolor] = useState('blue')
+  let count = 0;
+
   const createGroup = ()=>{
     const groupitems = {
       'groupName' : document.querySelector('input').value,
@@ -11,35 +29,41 @@ const page2 = () => {
       'colour' : color,
       'notes' : localStorage.getItem('chats')
     };
-    SetGroupList([...groupList, groupitems]);
+    if(document.querySelector('input').value!==''){
+      SetGroupList((groupList) => [...groupList, groupitems]);
+    }
     
-    let sf = shortForm();
+    // let sf = shortForm();
     // console.log(document.querySelector('input').value + ' ' + color + ' ' + sf);
-    console.log(groupList);
+    // console.log(groupList);
     document.getElementById("modalBox").style.display = 'none';
     document.getElementById("page1").style.overflow = 'scroll';
+    count++;
   }
   useEffect(()=>{
     localStorage.setItem("groupsList" , JSON.stringify(groupList));
+    localStorage.setItem("color" , JSON.stringify(color));
   },[groupList])
   const handleColorClick = (e)=>{
     const id = e.target.id;
     const colorValue = document.getElementById(id).style.background;
     setcolor(colorValue);
-    console.log(colorValue);
+    // console.log(colorValue);
   }
   let name = '';
   const shortForm = ()=>{
     const arr = document.querySelector('input').value.split(' ');
     if(arr.length > 1 && arr[0].length>0 && arr[1].length>0){
       name = arr[0][0] + arr[1][0];
-      console.log(name.toUpperCase());
+      // console.log(name.toUpperCase());
     }else{
       name = arr[0][0] + arr[0][1];
     }
-    return name;
+    return name.toLocaleUpperCase();
   }
   return (
+    <>
+    <Page1 list={groupList}/>
     <div className='page2' id='modalBox'>
         <div className="modalBox">
             <div className="container">
@@ -63,6 +87,7 @@ const page2 = () => {
             <button type='submit' onClick={createGroup}>Create</button>
         </div>
     </div>
+    </>
   )
 
 }

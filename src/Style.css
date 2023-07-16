@@ -8,34 +8,70 @@
 }
 .page1, .page2{
     width: 100vw;
-    height: 100vh;
+    height: auto;
+    min-height: 100vh;
     background-color: linen;
     display: flex;
+    font-family: math;
 }
 .groupSection{
     width: 30%;
-    height: 100%;
+    /* height: 100%; */
+    min-height: 100%;
     padding-left: 1.5%;
     padding-top: 1.5%;
     background-color: white;
 }
-.notesSection{
+.notesSection, .defaultPage{
     width: 70%;
     height: 100%;
     position: fixed;
     right: 0px;
+    display: none;
+}
+.defaultPage{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+    text-align: center;
+    font-family: math;
+}
+.textDiv{
+    width: 55%;
+    height: 70%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.textDiv > img{
+    width: 100%;
+}
+.textDiv > h2{
+    font-size: 40px;
+    margin-bottom: 8px;
+}
+.textDiv>p{
+    width: 88%;
+}
+.footer{
+    position: absolute;
+    bottom: 30px;
 }
 .newGroup{
     width: 100%;
-    height: 10%;
+    height: 3.8rem;
     display: flex;
     align-items: center;
     padding-left: 3%;
 }
 .heading{
     font-size: x-large;
-    height: 8%;
+    height: 3.4rem;
     width: 100%;
+    font-weight: bold;
+    font-family: math;
 }
 .btn{
     background-color: black;
@@ -77,6 +113,7 @@
     justify-content: center;
     align-items: center;
     margin-right: 3%;
+    color: white;
 }
 .name{
     font-size: larger;
@@ -115,7 +152,7 @@
     width: 3%;
     border: none;
     position: absolute;
-    right: 2%;
+    right: 2rem;
     bottom: 5%;
     background: white;
 }
@@ -137,6 +174,7 @@
     height: 100%;
 }
 .page2{
+    height: 100vh;
     background: rgba(49, 49, 49, 0.8);
     display: flex;
     display: none;
@@ -213,5 +251,57 @@
 .color:hover{
     outline: 1px solid black;
 }
+@media screen and (max-width: 1150px) {
+    .btn {
+      width: 90%;
+    }
+}
+@media screen and (max-width: 900px) {
+    .groupSection {
+      width: 40%;
+    }
+    .notesSection, .defaultPage{
+        width: 60%;
+    }
+    .textDiv{
+        height: 50%;
+        width: 70%;
+    }
+    .modalBox{
+        width: 50%;
+    }
+}
+@media screen and (max-width: 650px) {
+    .modalBox {
+      width: 65%;
+    }
+}
+@media screen and (max-width: 450px) {
+    .modalBox {
+      width: 75%;
+    }
+}
+@media screen and (max-width: 390px) {
+    .groupSection {
+      width: 100%;
+    }
+    .modalBox{
+        width: 85%;
+    }
+    .page1{
+        font-size: medium;
+    }
+    .group{
+        border-top-right-radius: 10px;
+        border-bottom-right-radius: 10px;
+        width: 95%;
+    }
+}
+::-webkit-scrollbar{
+    width: 0.1px;
+    height: 0.1px;
+    background-color: #fff;
+}
+
 
 

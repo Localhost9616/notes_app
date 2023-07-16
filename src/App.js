@@ -5,7 +5,7 @@ import Page2 from './page2'
 function App() {
   return (
     <>
-      <Page1/>
+      {/* <Page1/> */}
       <Page2/>
     </>
   );
