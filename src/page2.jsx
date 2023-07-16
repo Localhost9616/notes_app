@@ -33,9 +33,6 @@ const page2 = () => {
       SetGroupList((groupList) => [...groupList, groupitems]);
     }
     
-    // let sf = shortForm();
-    // console.log(document.querySelector('input').value + ' ' + color + ' ' + sf);
-    // console.log(groupList);
     document.getElementById("modalBox").style.display = 'none';
     document.getElementById("page1").style.overflow = 'scroll';
     count++;
@@ -48,14 +45,12 @@ const page2 = () => {
     const id = e.target.id;
     const colorValue = document.getElementById(id).style.background;
     setcolor(colorValue);
-    // console.log(colorValue);
   }
   let name = '';
   const shortForm = ()=>{
     const arr = document.querySelector('input').value.split(' ');
     if(arr.length > 1 && arr[0].length>0 && arr[1].length>0){
       name = arr[0][0] + arr[1][0];
-      // console.log(name.toUpperCase());
     }else{
       name = arr[0][0] + arr[0][1];
     }

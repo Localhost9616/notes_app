@@ -45,9 +45,7 @@ const page1 = (props) => {
   const [count, setCount] = useState(savedCount);
   const [selected, setSelected] = useState(false);
   const [groupNumber, setGroupNumber] = useState(6);
-  // let groupNumber = 6;
-  // let selected = false;
-  // const val = props.List;
+
   const date = new Date();
   let hours = date.getHours() % 12;
   let minutes = date.getMinutes();
@@ -60,6 +58,7 @@ const page1 = (props) => {
   let day = date.getDate();
   let month = date.toLocaleString('default', { month: 'long' });
   let year = date.getFullYear();
+
   let makeNewNote = (text)=>{
     const arr = {
       'time': `${hours} : ${minutes} ${amPm}`,
@@ -73,9 +72,7 @@ const page1 = (props) => {
     }else{
       setNotesArr((notesArr) =>[...notesArr, arr]);
     }
-    // localStorage.setItem('chats', JSON.stringify(notesArr))
   }
-  // (props.list)? SetGroupList(props.list): SetGroupList(List);
   useEffect(()=>{
     localStorage.setItem('notesArr', JSON.stringify(notesArr))
     localStorage.setItem('notesList', JSON.stringify(Allnotes))
@@ -83,7 +80,6 @@ const page1 = (props) => {
     localStorage.setItem('groupNumber', JSON.stringify(groupNumber))
     localStorage.setItem('selected', JSON.stringify(selected))
   },[notesArr])
-  // console.log(localStorage.getItem('chats'))
   
   useEffect(()=>{
     setTimeout(()=>{
@@ -91,37 +87,22 @@ const page1 = (props) => {
       if(storedItems || storedItems.length > 0){
         SetGroupList(JSON.parse(storedItems));
       }
-      // console.log(notesArr.length)
-      // console.log(Allnotes.length && (List.length===Allnotes.length))
-      // if(notesArr.length > 0 )
-      
-    
     },200) 
-    // if(notesArr.length > 0){
-    //   console.log(notesArr)
       console.log(count)
       console.log(props.list.length)
-    //   if(List.length === props.list.length){
       if(props.list.length === count){
         setAllNotes((Allnotes) => [...Allnotes, notesArr]);
         setNotesArr([]);
         setCount(count+1);
       }
       setSelected(false);
-        console.log(count)
+      console.log(count)
         
-      // }else{
-      //   setNotesArr(notesArr)
-      // }
-    // }
-    // console.log(Allnotes)
-    // console.log(localStorage.getItem('groupsList'));
   },[props.list]);
   console.log(Allnotes)
   
   const changeText = (e)=>{
     setText(e.target.value);
-    // console.log(text);
   }
   const makeNotes = ()=>{
     if(text !== ''){
@@ -138,16 +119,9 @@ const page1 = (props) => {
   const openNotes = ()=>{
     console.log("clicked")
   }
-  // useEffect(()=>{
-  //   console.log(groupNumber);
-  // },[groupNumber])
   const handleDataFromChild = (data) => {
-    // groupNumber = data;
     setGroupNumber(data+2);
     setSelected(true);
-    // (props.list.length === count) ? setGroupNumber(props.list.length) : setGroupNumber(data+2)
-    // console.log(count + props.list);
-    // Allnotes[Allnotes.length-2].map((note)=> <SampleNote date={note.date} time={note.time} message={note.message}/>)
   };
   if(selected){
     document.getElementById('defaultPage').style.display = 'none';
@@ -160,14 +134,12 @@ const page1 = (props) => {
     setTimeout(() => { 
       document.getElementById('butn').innerText = 'Create Group';
     }, 200);
-    // document.getElementById('butn').innerText = 'Create Group'
   }
   if (mediaQuery2.matches) {
     setTimeout(() => { 
       document.getElementById('butn').style.fontSize = '110%';
       document.getElementById('page1').style.fontSize = '80%';
     }, 20);
-    // document.getElementById('butn').innerText = 'Create Group'
   }
   if (mediaQuery3.matches) {
     setTimeout(() => { 
@@ -189,7 +161,6 @@ const page1 = (props) => {
 
       }
     }, 20);
-    // document.getElementById('butn').innerText = 'Create Group'
   }
   return (
     <div className='page1' id='page1'>
@@ -204,10 +175,7 @@ const page1 = (props) => {
             </button>
           </div>
           <div className="groups">
-            {/* {console.log()} */}
-            {/* {SetGroupList(props.list)} */}
           {List.map((group, index) => <Group key={index} id={index} name={group.groupName} shortform={group.shortForm} iconColor={group.colour} sendDataToParent={handleDataFromChild}/>)}
-            
           </div>
         </div>
         <div className='defaultPage' id='defaultPage'>
@@ -222,25 +190,10 @@ const page1 = (props) => {
         </div>
         <div className="notesSection" id='notesSection'>
           <div className="header" id='header'>
-            {/* {(props.list.length > 0) ? document.getElementById('header').innerHTML = <Header heading = {(selected) ? props.list[groupNumber-2].groupName : props.list[props.list.length-1].groupName} shortform = {(selected) ? props.list[groupNumber-2].shortForm : props.list[props.list.length-1].shortForm} color = {(selected) ? props.list[groupNumber-2].colour : props.list[props.list.length-1].colour}/>  : document.getElementById('header').innerHTML = <Header/>} */}
-            {/* <Header heading = {(selected) ? props.list[groupNumber-2].groupName : props.list[props.list.length-1].groupName} shortform = {(selected) ? props.list[groupNumber-2].shortForm : props.list[props.list.length-1].shortForm} color = {(selected) ? props.list[groupNumber-2].colour : props.list[props.list.length-1].colour}/> */}
             {(props.list.length > 0) ? <Header heading = {(selected) ? props.list[groupNumber-2].groupName : props.list[props.list.length-1].groupName} shortform = {(selected) ? props.list[groupNumber-2].shortForm : props.list[props.list.length-1].shortForm} color = {(selected) ? props.list[groupNumber-2].colour : props.list[props.list.length-1].colour}/> : ''}
           </div>
           <div className="notes" id='notes'>
-            {console.log(Allnotes[3])}
-            {console.log(props.list)}
-            {
-              // (selected === true) ? Allnotes[3].map((note)=> <SampleNote date={note.date} time={note.time} message={note.message}/>) : notesArr.map((note)=> <SampleNote date={note.date} time={note.time} message={note.message}/>)
-              (selected === true) ? console.log("firstloop") : console.log("secondlopp")
-            }
-            {/* {useEffect(()=>{
-              Allnotes[4].map((note)=> <SampleNote date={note.date} time={note.time} message={note.message}/>)
-              console.log(Allnotes[4].map((note)=> <SampleNote date={note.date} time={note.time} message={note.message}/>))
-            },)[props.list]} */}
-            {/* {(props.list.length > Allnotes.length-2) ? setNotesArr([]) : console.log('dec')} */}
             {(groupNumber < Allnotes.length && (selected === true)) ? Allnotes[groupNumber].map((note)=> <SampleNote date={note.date} time={note.time} message={note.message}/>) : notesArr.map((note)=> <SampleNote date={note.date} time={note.time} message={note.message}/>)}
-            {/* {Allnotes.length} */}
-            {/* {notesArr.map((note)=> <SampleNote date={note.date} time={note.time} message={note.message}/>)} */}
           </div>
           <div className="textBox" id='textBox'>
             <textarea onChange={changeText} name="message" id="textArea" cols="30" rows="10" placeholder='Enter your text here....'></textarea>
