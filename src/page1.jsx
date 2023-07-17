@@ -2,6 +2,7 @@ import React, {useEffect, useState } from 'react'
 import './Style.css'
 import Image1 from './Assets/Images/+.png'
 import Image2 from './Assets/Images/img.png'
+import Image3 from './Assets/Images/left-arrow.png'
 import Group from './components/group'
 import Send from './Assets/Images/send.png'
 import Header from './components/header'
@@ -89,9 +90,6 @@ const Page1 = (props) => {
         setCount(count+1);
       }
       setSelected(false);
-      // setGroupNumber(Allnotes.length-1);
-    
-        
   },[props.list]);
   
   const changeText = (e)=>{
@@ -116,6 +114,12 @@ const Page1 = (props) => {
   if(selected){
     document.getElementById('defaultPage').style.display = 'none';
     document.getElementById('notesSection').style.display = 'block';
+  }
+  const moveBack = ()=>{
+    document.getElementById('notesSection').style.display = 'none'
+    document.getElementById('groupSection').style.display = 'block'
+    document.getElementById('butn').style.display = 'flex'
+    setSelected(false);
   }
   const mediaQuery = window.matchMedia('(max-width: 650px)')
   const mediaQuery2 = window.matchMedia('(max-width: 500px)')
@@ -180,6 +184,7 @@ const Page1 = (props) => {
         </div>
         <div className="notesSection" id='notesSection'>
           <div className="header" id='header'>
+            <button onClick={moveBack} className='backBtn' id='backBtn'><img src= {Image3} alt="Error" /></button>
             {(props.list.length > 0) ? <Header heading = {(selected) ? props.list[groupNumber-2].groupName : props.list[props.list.length-1].groupName} shortform = {(selected) ? props.list[groupNumber-2].shortForm : props.list[props.list.length-1].shortForm} color = {(selected) ? props.list[groupNumber-2].colour : props.list[props.list.length-1].colour}/> : ''}
           </div>
           <div className="notes" id='notes'>

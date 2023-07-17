@@ -119,8 +119,12 @@
     font-size: larger;
 }
 .header{
-    height: 10%;
+    height: fit-content;
+    padding-top: 0.3rem;
+    padding-bottom: 0.3rem;
+    padding-left: 12px;
     width: 100%;
+    background: #E8E8E8;
 }
 .notes{
     height: 60%;
@@ -153,7 +157,7 @@
     border: none;
     position: absolute;
     right: 2rem;
-    bottom: 5%;
+    bottom: 3.8%;
     background: white;
 }
 .sampleNote{
@@ -172,6 +176,7 @@
 .message{
     width: 83%;
     height: 100%;
+    margin-left: 2rem;
 }
 .page2{
     height: 100vh;
@@ -248,6 +253,18 @@
     color: white;
     border-radius: 7px;
 }
+.backBtn{
+    width: 28px;
+    height: 28px;
+    border: none;
+    display: none;
+    position: absolute;
+    top: 1.2rem;
+    left: 5px;
+}
+.backBtn > img{
+    width: 100%;
+}
 .color:hover{
     outline: 1px solid black;
 }
@@ -270,10 +287,16 @@
     .modalBox{
         width: 50%;
     }
+    .timeStamps{
+        width: 30%;
+    }
 }
 @media screen and (max-width: 650px) {
     .modalBox {
       width: 65%;
+    }
+    .timeStamps{
+        width: 50%;
     }
 }
 @media screen and (max-width: 450px) {
@@ -295,6 +318,12 @@
         border-top-right-radius: 10px;
         border-bottom-right-radius: 10px;
         width: 95%;
+    }
+    .backBtn{
+        display: block;
+    }
+    .header{
+        padding-left: 35px;
     }
 }
 ::-webkit-scrollbar{
