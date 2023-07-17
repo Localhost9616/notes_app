@@ -119,7 +119,7 @@ const Page1 = (props) => {
   }
   const mediaQuery = window.matchMedia('(max-width: 650px)')
   const mediaQuery2 = window.matchMedia('(max-width: 500px)')
-  const mediaQuery3 = window.matchMedia('(max-width: 390px)')
+  const mediaQuery3 = window.matchMedia('(max-width: 400px)')
   if (mediaQuery.matches) {
     setTimeout(() => { 
       document.getElementById('butn').innerText = 'Create Group';
