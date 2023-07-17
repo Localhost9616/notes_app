@@ -65,12 +65,15 @@ const page1 = (props) => {
       'date': `${day}  ${month}  ${year}`,
       'message': text
     }
-    if(groupNumber !== Allnotes.length){
+    console.log(groupNumber + " " + Allnotes.length)
+    if(((selected) && (groupNumber !== Allnotes.length)) && (props.list.length > 1)){
       let item = [...Allnotes[groupNumber],arr]
       Allnotes[groupNumber] = item;
       console.log(item);
     }else{
+      console.log(notesArr)
       setNotesArr((notesArr) =>[...notesArr, arr]);
+      console.log(notesArr)
     }
   }
   useEffect(()=>{
@@ -96,7 +99,10 @@ const page1 = (props) => {
         setCount(count+1);
       }
       setSelected(false);
-      console.log(count)
+      // setGroupNumber(Allnotes.length-1);
+    
+      console.log(Allnotes.length)
+      console.log(groupNumber)
         
   },[props.list]);
   console.log(Allnotes)
@@ -193,6 +199,7 @@ const page1 = (props) => {
             {(props.list.length > 0) ? <Header heading = {(selected) ? props.list[groupNumber-2].groupName : props.list[props.list.length-1].groupName} shortform = {(selected) ? props.list[groupNumber-2].shortForm : props.list[props.list.length-1].shortForm} color = {(selected) ? props.list[groupNumber-2].colour : props.list[props.list.length-1].colour}/> : ''}
           </div>
           <div className="notes" id='notes'>
+            {console.log( selected + "" + groupNumber)}
             {(groupNumber < Allnotes.length && (selected === true)) ? Allnotes[groupNumber].map((note)=> <SampleNote date={note.date} time={note.time} message={note.message}/>) : notesArr.map((note)=> <SampleNote date={note.date} time={note.time} message={note.message}/>)}
           </div>
           <div className="textBox" id='textBox'>
