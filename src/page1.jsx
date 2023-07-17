@@ -10,7 +10,6 @@ import SampleNote from './components/sampleNote'
 const page1 = (props) => {
   const savednotes = ()=>{
     let notes = localStorage.getItem('notesList')
-    console.log(notes);
     if(notes){
       return JSON.parse(notes);
     }else{
@@ -19,7 +18,6 @@ const page1 = (props) => {
   }
   const savednotesArr = ()=>{
     let notes = localStorage.getItem('notesArr')
-    console.log(notes);
     if(notes){
       return JSON.parse(notes);
     }else{
@@ -28,7 +26,6 @@ const page1 = (props) => {
   }
   const savedCount = ()=>{
     let cnt = localStorage.getItem('count')
-    console.log(cnt);
     if(cnt){
       return JSON.parse(cnt);
     }else{
@@ -39,7 +36,6 @@ const page1 = (props) => {
   const textArea = document.getElementById('textArea');
   const [text, setText] = useState("");
   const [notesArr, setNotesArr] = useState(savednotesArr());
-  console.log(savednotes());
   const [Allnotes, setAllNotes] = useState(savednotes());
   const [List, SetGroupList] = useState([]);
   const [count, setCount] = useState(savedCount);
@@ -65,15 +61,11 @@ const page1 = (props) => {
       'date': `${day}  ${month}  ${year}`,
       'message': text
     }
-    console.log(groupNumber + " " + Allnotes.length)
     if(((selected) && (groupNumber !== Allnotes.length)) && (props.list.length > 1)){
       let item = [...Allnotes[groupNumber],arr]
       Allnotes[groupNumber] = item;
-      console.log(item);
     }else{
-      console.log(notesArr)
       setNotesArr((notesArr) =>[...notesArr, arr]);
-      console.log(notesArr)
     }
   }
   useEffect(()=>{
@@ -91,8 +83,6 @@ const page1 = (props) => {
         SetGroupList(JSON.parse(storedItems));
       }
     },200) 
-      console.log(count)
-      console.log(props.list.length)
       if(props.list.length === count){
         setAllNotes((Allnotes) => [...Allnotes, notesArr]);
         setNotesArr([]);
@@ -101,11 +91,8 @@ const page1 = (props) => {
       setSelected(false);
       // setGroupNumber(Allnotes.length-1);
     
-      console.log(Allnotes.length)
-      console.log(groupNumber)
         
   },[props.list]);
-  console.log(Allnotes)
   
   const changeText = (e)=>{
     setText(e.target.value);
@@ -116,15 +103,12 @@ const page1 = (props) => {
       textArea.value = '';
       setText("");
     }
-    console.log(notesArr);
   }
   const openModalBox = ()=>{
     document.getElementById("modalBox").style.display = 'flex';
     document.getElementById("page1").style.overflow = 'hidden';
   }
-  const openNotes = ()=>{
-    console.log("clicked")
-  }
+  
   const handleDataFromChild = (data) => {
     setGroupNumber(data+2);
     setSelected(true);
@@ -199,7 +183,6 @@ const page1 = (props) => {
             {(props.list.length > 0) ? <Header heading = {(selected) ? props.list[groupNumber-2].groupName : props.list[props.list.length-1].groupName} shortform = {(selected) ? props.list[groupNumber-2].shortForm : props.list[props.list.length-1].shortForm} color = {(selected) ? props.list[groupNumber-2].colour : props.list[props.list.length-1].colour}/> : ''}
           </div>
           <div className="notes" id='notes'>
-            {console.log( selected + "" + groupNumber)}
             {(groupNumber < Allnotes.length && (selected === true)) ? Allnotes[groupNumber].map((note)=> <SampleNote date={note.date} time={note.time} message={note.message}/>) : notesArr.map((note)=> <SampleNote date={note.date} time={note.time} message={note.message}/>)}
           </div>
           <div className="textBox" id='textBox'>

@@ -14,7 +14,6 @@ const group = (props) => {
     const data = props.id ;
     document.getElementsByClassName('group')[prev].style.background = 'white';
     document.getElementsByClassName('group')[data].style.background = '#F7ECDC';
-    console.log(props.iconColor)
     prev = data;
     props.sendDataToParent(data);
   };
