@@ -7,7 +7,7 @@ import Send from './Assets/Images/send.png'
 import Header from './components/header'
 import SampleNote from './components/sampleNote'
 
-const page1 = (props) => {
+const Page1 = (props) => {
   const savednotes = ()=>{
     let notes = localStorage.getItem('notesList')
     if(notes){
@@ -194,4 +194,4 @@ const page1 = (props) => {
   )
 }
 
-export default page1
+export default Page1

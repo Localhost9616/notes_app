@@ -1,6 +1,6 @@
 import React from 'react';
 
-const header = (props) => {
+const Header = (props) => {
   return (
     <>
     <div className="group" style={{'background' : "#E8E8E8" , height: '100%', borderRadius:'0%', paddingLeft: '1%', width:'100%'}} >
@@ -11,4 +11,4 @@ const header = (props) => {
   )
 }
 
-export default header;
+export default Header;

@@ -1,6 +1,6 @@
 import React from 'react'
 
-const sampleNote = (props) => {
+const SampleNote = (props) => {
   return (
     <div className='sampleNote'>
         <div className="timeStamps">
@@ -14,4 +14,4 @@ const sampleNote = (props) => {
   )
 }
 
-export default sampleNote;
+export default SampleNote;

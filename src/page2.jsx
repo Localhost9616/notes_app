@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Page1 from './page1';
 
-const page2 = () => {
+const Page2 = () => {
   const savedData = ()=>{
     let data = localStorage.getItem('groupsList');
     if(data){
@@ -87,4 +87,4 @@ const page2 = () => {
 
 }
 
-export default page2
+export default Page2

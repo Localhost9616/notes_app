@@ -1,7 +1,7 @@
 import React from 'react';
 
 let prev = 0;
-const group = (props) => {
+const Group = (props) => {
   const openNotes = ()=>{
     console.log("click");
     let Allnotes = JSON.parse(localStorage.getItem('notesList'))
@@ -27,4 +27,4 @@ const group = (props) => {
   )
 }
 
-export default group;
+export default Group;
